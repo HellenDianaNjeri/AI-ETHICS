@@ -1,0 +1,2 @@
+# AI-ETHICS
+week 7 AI ASSIGNMENT
