@@ -1,0 +1,24 @@
+COMPAS Recidivism Risk Score Bias Audit
+
+Overview:
+The COMPAS dataset, used for predicting recidivism risk, has raised ethical concerns regarding racial bias. This audit utilizes IBM’s AI Fairness 360 toolkit to assess fairness in the system’s predictions, focusing on African-American and Caucasian individuals.
+
+Findings:
+Using fairness metrics such as disparate impact, statistical parity difference, and false positive rate (FPR), we observed the following:
+- African-American defendants were significantly more likely to be classified as high-risk but not reoffend, indicating a high false positive rate.
+- Caucasian defendants showed a higher likelihood of being classified as low-risk despite reoffending, leading to false negatives.
+
+The disparate impact ratio for high-risk prediction was below the threshold of 0.8, suggesting adverse impact against African-Americans. Moreover, the equal opportunity difference exceeded acceptable bounds, confirming unequal treatment between groups.
+
+Visualizations from AIF360 clearly highlighted these disparities. Bar charts comparing FPR by race and disparity metrics further illustrated systemic unfairness in the COMPAS algorithm.
+
+Remediation:
+To mitigate bias, the following techniques are recommended:
+1. Reweighing: Assigning weights to different groups in the training dataset to balance representation.
+2. Preprocessing: Removing or modifying biased attributes (e.g., race or proxies like zip code).
+3. Postprocessing: Calibrating prediction thresholds to equalize false positive/negative rates across groups.
+
+Conclusion:
+The COMPAS model demonstrates clear racial bias, violating fairness principles such as justice and non-maleficence. These biases can lead to unjust incarceration and societal harm. Implementing mitigation techniques and continual auditing is essential for deploying responsible and fair AI in criminal justice.
+
+This audit underscores the importance of transparent and equitable AI systems. Developers must ensure that tools used in high-stakes domains like law enforcement are thoroughly vetted for fairness and aligned with ethical AI principles.
